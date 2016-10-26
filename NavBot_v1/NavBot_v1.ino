@@ -11,10 +11,10 @@
 // Config Logic
 //----------------------------------------
 
-#define CFG_TEST_ENCODERS     0     // print encoder ticks as they change
+#define CFG_TEST_ENCODERS     1     // print encoder ticks as they change
 #define CFG_TEST_MOTORS       0     // verify motor wiring
 #define CFG_SQUARE_TEST       0
-#define CFG_CALIBRATE_MOVE    1     // straight line movement
+#define CFG_CALIBRATE_MOVE    0     // straight line movement
 #define CFG_CALIBRATE_TURNS   0     // turning only test
 
 #define CAL_DISTANCE      2     // meters to move for CALIBRATE_MOVE
@@ -26,12 +26,12 @@
 // Serial output config
 //----------------------------------------
 
-#define SERIAL_BAUD   9600
+#define SERIAL_BAUD     115200
 
 #define MOTOR_INFO      0       // print motor values
 #define BUTTON_INFO     0       // print button state
 #define NAV_INFO        0       // print nav data
-#define TARGET_INFO     1       // print nav data at way points
+#define TARGET_INFO     0       // print nav data at way points
 #define MEM_REPORT      0       // print memory usage at startup
 
 //----------------------------------------
@@ -67,9 +67,14 @@ int16_t *run_sequence = my_path;
 //#include "WallieBot.h"
 
 // BLACK_BOT
-#include <Wire.h>
-#include <Adafruit_MotorShield.h>
-#include "BlackBot.h"
+//#include <Wire.h>
+//#include <Adafruit_MotorShield.h>
+//#include "BlackBot.h"
+
+// MUSAFIR
+#include "MusafirMotor.h"
+#include <Encoder.h>
+#include "Musafir.h"
 
 // MY_BOT
 //#inlcude <...your needed header files...>
@@ -80,7 +85,7 @@ int16_t *run_sequence = my_path;
 // Config
 //----------------------------------------
 
-bool pushToStart        = true;
+bool pushToStart        = false;
 
 
 //----------------------------------------
