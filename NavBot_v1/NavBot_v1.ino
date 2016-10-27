@@ -11,16 +11,16 @@
 // Config Logic
 //----------------------------------------
 
-#define CFG_TEST_ENCODERS     1     // print encoder ticks as they change
+#define CFG_TEST_ENCODERS     0     // print encoder ticks as they change
 #define CFG_TEST_MOTORS       0     // verify motor wiring
 #define CFG_SQUARE_TEST       0
 #define CFG_CALIBRATE_MOVE    0     // straight line movement
-#define CFG_CALIBRATE_TURNS   0     // turning only test
+#define CFG_CALIBRATE_TURNS   1     // turning only test
 
 #define CAL_DISTANCE      2     // meters to move for CALIBRATE_MOVE
-#define CAL_TURNS         5     // num of turns for CALIBRATE_TURNS (+ right, - left)
+#define CAL_TURNS         4     // num of turns for CALIBRATE_TURNS (+ right, - left)
 
-#define SQUARE_SIZE       800   // size of square test sides in mm
+#define SQUARE_SIZE       1000   // size of square test sides in mm
 
 //----------------------------------------
 // Serial output config
@@ -28,11 +28,11 @@
 
 #define SERIAL_BAUD     115200
 
-#define MOTOR_INFO      0       // print motor values
-#define BUTTON_INFO     0       // print button state
-#define NAV_INFO        0       // print nav data
-#define TARGET_INFO     0       // print nav data at way points
-#define MEM_REPORT      0       // print memory usage at startup
+#define MOTOR_INFO      0  // print motor values
+#define BUTTON_INFO     0  // print button state
+#define NAV_INFO        0  // print nav data
+#define TARGET_INFO     0  // print nav data at way points
+#define MEM_REPORT      0  // print memory usage at startup
 
 //----------------------------------------
 // Your Paths
@@ -85,7 +85,7 @@ int16_t *run_sequence = my_path;
 // Config
 //----------------------------------------
 
-bool pushToStart        = false;
+bool pushToStart        = true;
 
 
 //----------------------------------------
@@ -101,7 +101,7 @@ enum State
   NUM_STATES
 };
 
-State state       = INIT;
+State state = INIT;
 
 
 //----------------------------------------
@@ -150,7 +150,7 @@ int16_t ccwSquare[] =
   PTH_END 
 };
 
-int16_t *squarePath = cwSquare;
+int16_t *squarePath = fullSquare;
 
 //----------------------------------------
 // Validate Config
@@ -168,7 +168,8 @@ int16_t *squarePath = cwSquare;
 void setup() 
 {
 
-  
+  pinMode(A0, OUTPUT);
+  digitalWrite(A0, LOW);  
   pinMode(BUTTON_PIN, INPUT);
   digitalWrite(BUTTON_PIN, HIGH);
 
@@ -231,9 +232,9 @@ void loop()
       #elif CFG_TEST_MOTORS
           while(1)
           {
-            motor_handler( &pilot, 0, 256 );
+            motor_handler( &pilot, 0, 500 );
             delay(2000);
-            motor_handler( &pilot, 256, 0 );
+            motor_handler( &pilot, 500, 0 );
             delay(2000);
           }
       #else

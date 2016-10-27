@@ -17,7 +17,7 @@
 #define PLT_SPEED_INFO              0
 #define PLT_SHOW_HEADING_ADJUST     0
 #define PLT_SHOW_TURN_ADJUST        0
-#define PLT_GRAPH_WHEEL_PID         0
+#define PLT_GRAPH_WHEEL_PID         1
 #define PLT_GRAPH_SPEED_PID         0
 #define PLT_GRAPH_HEADING_PID       0
 

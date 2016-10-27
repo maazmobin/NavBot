@@ -75,9 +75,9 @@ m_drticks(0),
 m_dlticks(0),
 m_was_in_motion(false)
 {
-	SetHeadingPID( 5.0f, 0.1f, 0.0f );
-	SetSpeedPID( 0.5f, 0.0f, 0.0f );
-	SetWheelPID( 2.0f, 1.0f, 1.0f );
+	SetHeadingPID( 0.0f, 0.0f, 0.0f );
+	SetSpeedPID( 0.0f, 0.0f, 0.0f );
+	SetWheelPID( 10.0f, 0.0f, 0.0f );
 }
 
 //----------------------------------------

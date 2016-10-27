@@ -10,7 +10,7 @@
 #define WHEEL_DIAMETER          nvMM(90)     // millimeters
 #define TICKS_PER_REV           1500
 
-#define BUTTON_PIN              A5
+#define BUTTON_PIN              A1
 
 // correct for systematic errors
 #define WHEEL_RL_SCALER         1.0f  // Ed
@@ -62,15 +62,20 @@ void init_bot()
 
 void set_mspeed( MusafirMotor *mm, int16_t speed )
 {
-  if (speed < 0 )
+  if (speed < -25 )
   {
     mm->setPWM(-speed);
     mm->setDir(BACKWARD);
   }
   else
   {
-    mm->setPWM (speed);
-    mm->setDir(FORWARD);
+    if(speed<=25){
+      mm->setDir(BRAKE);
+      mm->setPWM(254);
+    }else{
+      mm->setDir(FORWARD);
+      mm->setPWM(speed);
+    }
   }
 }
 
