@@ -45,11 +45,11 @@ m_ticks_handler(NULL),
 m_ticks_handler_data(NULL),
 m_motor_handler(NULL),
 m_motor_handler_data(NULL),
-m_min_move_speed(10.0f),
-m_max_move_speed(100.0f),
-m_min_turn_speed(15.0f),
-m_max_turn_speed(60.0f),
-m_min_update_interval(100.0f),
+m_min_move_speed(100.0f),
+m_max_move_speed(500.0f),
+m_min_turn_speed(45.0f),
+m_max_turn_speed(90.0f),
+m_min_update_interval(20.0f),
 m_dt(0),
 m_lticks(0),
 m_rticks(0),
@@ -75,9 +75,9 @@ m_drticks(0),
 m_dlticks(0),
 m_was_in_motion(false)
 {
-	SetHeadingPID( 0.0f, 0.0f, 0.0f );
-	SetSpeedPID( 0.0f, 0.0f, 0.0f );
-	SetWheelPID( 10.0f, 0.0f, 0.0f );
+    SetHeadingPID( 0.0f, 0.0f, 0.0f );
+    SetSpeedPID( 0.0f, 0.0f, 0.0f );
+    SetWheelPID( 0.4f, 0.02f, 0.00f );
 }
 
 //----------------------------------------

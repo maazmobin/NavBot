@@ -62,14 +62,14 @@ void init_bot()
 
 void set_mspeed( MusafirMotor *mm, int16_t speed )
 {
-  if (speed < -25 )
+  if (speed < -20 )
   {
     mm->setPWM(-speed);
     mm->setDir(BACKWARD);
   }
   else
   {
-    if(speed<=25){
+    if(speed<=20){
       mm->setDir(BRAKE);
       mm->setPWM(254);
     }else{
